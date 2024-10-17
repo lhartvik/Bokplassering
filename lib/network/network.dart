@@ -14,11 +14,15 @@ class Network {
     print("Statuskode: ${response.statusCode}");
 
     if (response.statusCode == 200) {
+      print("dekoder..");
       var data = json.decode(response.body);
+      print("Ferdig å dekode");
       if (data['hits'] != null && data['hits'] is List) {
+        print("Serialiserer bøker");
         List<DeichmanBok> books = (data['hits'] as List<dynamic>)
             .map((book) => DeichmanBok.fromJson(book as Map<String, dynamic>))
             .toList();
+        print("ferdig å serialisere bøker");
         return books;
       } else {
         return [];

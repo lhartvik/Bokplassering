@@ -37,28 +37,11 @@ class Sokeside extends StatefulWidget {
 class _SokesideState extends State<Sokeside> {
   int _currentIndex = 0;
 
-  Network network = Network();
-
-  Future<void> _searchBooks(String query) async {
-    try {
-      List<DeichmanBok> books = await network.searchDeichmanBooks(query);
-      print("Books: ${books.toString()}");
-    } catch (e) {
-      print("Error");
-    }
-  }
-
   final List<Widget> _screens = [
     const HomeScreen(),
     const DeichmanScreen(),
     const CiceroScreen(),
   ];
-
-  @override
-  void initState() {
-    _searchBooks("Pyramidene");
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

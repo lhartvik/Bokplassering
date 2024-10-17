@@ -1,38 +1,34 @@
-import 'dart:ffi';
-
 class DeichmanBok {
   final String id;
   final String recordId;
   final String title;
+  final String mediaType;
   final List<String> author;
-  final List<String> publishedBy;
   final int publishedYear;
-  final Map<String, String> imageLinks;
+  final String imageLink;
 
   DeichmanBok(
       {required this.id,
       required this.recordId,
       required this.title,
+      required this.mediaType,
       required this.author,
-      required this.publishedBy,
       required this.publishedYear,
-      required this.imageLinks});
+      required this.imageLink});
 
   factory DeichmanBok.fromJson(Map<String, dynamic> json) {
+    print("serialiserer ${json['recordId']}");
     var bok = DeichmanBok(
         id: json['id'],
         recordId: json['recordId'],
         title: json['fullTitle'],
+        mediaType: json['mediaType'] ?? '',
         author: (json['author'] as List<dynamic>? ?? [])
             .map((author) => author.toString())
             .toList(),
-        publishedBy: (json['publishedBy'] as List<dynamic>? ?? [])
-            .map((publisher) => publisher.toString())
-            .toList(),
         publishedYear: json['publicationYear'] ?? 0,
-        imageLinks: (json['images'] as Map<String, dynamic>? ?? {})
-            .map((key, value) => MapEntry(key, value.toString())));
-
+        imageLink: json['coverImage'] ?? '');
+    print(bok);
     return bok;
   }
 
@@ -41,10 +37,10 @@ class DeichmanBok {
       'id': id,
       'recordId': recordId,
       'fullTitle': title,
+      'mediaType': mediaType,
       'author': author,
-      'publishedBy': publishedBy,
       'publishedYear': publishedYear,
-      'images': imageLinks,
+      'coverImage': imageLink,
     };
   }
 
@@ -53,15 +49,14 @@ class DeichmanBok {
         id: jsonObject['id'] as String,
         recordId: jsonObject['recordId'] as String,
         title: jsonObject['fullTitle'] as String,
+        mediaType: jsonObject['mediaType'] as String,
         author: jsonObject['author'] as List<String>,
-        publishedBy: jsonObject['publishedBy'] as List<String>,
         publishedYear: jsonObject['publishedYear'] as int,
-        imageLinks: jsonObject['images'] as Map<String, String>);
+        imageLink: jsonObject['coverImage'] as String);
   }
 
   @override
   String toString() {
-    // TODO: implement toString
-    return title;
+    return "$mediaType, $title av ${author.length > 0 ? author.first : "(mangler forfatter)"}, image: $imageLink";
   }
 }
