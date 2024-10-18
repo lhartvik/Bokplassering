@@ -1,7 +1,6 @@
-import 'package:bokplasseringer/models/deichman_bok.dart';
-import 'package:bokplasseringer/network/network.dart';
 import 'package:flutter/material.dart';
 
+import 'pages/book_details_screen.dart';
 import 'pages/cicero_screen.dart';
 import 'pages/deichman_screen.dart';
 import 'pages/home_screen.dart';
@@ -21,6 +20,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent),
         useMaterial3: true,
       ),
+      initialRoute: '/',
+      routes: {
+        '/home': (context) => const HomeScreen(),
+        '/saved': (context) => const DeichmanScreen(),
+        '/favorites': (context) => const CiceroScreen(),
+        '/details': (context) => const BookDetailsScreen(),
+      },
       // debugShowCheckedModeBanner: false,
       home: const Sokeside(),
     );
