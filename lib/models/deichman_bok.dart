@@ -21,7 +21,6 @@ class DeichmanBok {
       required this.plot});
 
   factory DeichmanBok.fromJson(Map<String, dynamic> json) {
-    print("serialiserer ${json['recordId']}");
     var bok = DeichmanBok(
         id: json['id'],
         recordId: json['recordId'],
@@ -33,7 +32,6 @@ class DeichmanBok {
         publishedYear: json['publicationYear'] ?? 0,
         imageLink: json['coverImage'] ?? '',
         plot: json['various']?[0] ?? '');
-    print(bok);
     return bok;
   }
 

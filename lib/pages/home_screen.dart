@@ -1,9 +1,7 @@
 import 'package:bokplasseringer/network/network.dart';
-import 'package:bokplasseringer/pages/book_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../components/grid_view_widget.dart';
-import '../models/book_details_arguments.dart';
 import '../models/deichman_bok.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,13 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
   List<DeichmanBok> _books = [];
   Future<void> _searchBooks(String query) async {
     try {
-      print("_searchBooks: $query");
       List<DeichmanBok> books = await network.searchDeichmanBooks(query);
       setState(() {
         _books = books;
       });
     } catch (e) {
-      print("Error");
+      print("Error: $e");
     }
     setState(() {});
   }

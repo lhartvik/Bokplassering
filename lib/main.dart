@@ -68,7 +68,6 @@ class _SokesideState extends State<Sokeside> {
           selectedItemColor: Theme.of(context).colorScheme.onPrimary,
           unselectedItemColor: Theme.of(context).colorScheme.onSurface,
           onTap: (value) {
-            print('Tapped: $value');
             setState(() {
               _currentIndex = value;
             });

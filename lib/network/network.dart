@@ -1,3 +1,4 @@
+import 'package:bokplasseringer/models/cicero_bok.dart';
 import 'package:bokplasseringer/models/deichman_bok.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -8,27 +9,52 @@ class Network {
 
   Future<List<DeichmanBok>> searchDeichmanBooks(String query) async {
     var url = Uri.parse('$_deichmanUrl?query=$query');
-    print("searchDeichmanBooks $query - $url");
     var response = await http.get(url);
 
-    print("Statuskode: ${response.statusCode}");
-
     if (response.statusCode == 200) {
-      print("dekoder..");
       var data = json.decode(response.body);
-      print("Ferdig å dekode");
       if (data['hits'] != null && data['hits'] is List) {
-        print("Serialiserer bøker");
         List<DeichmanBok> books = (data['hits'] as List<dynamic>)
             .map((book) => DeichmanBok.fromJson(book as Map<String, dynamic>))
             .toList();
-        print("ferdig å serialisere bøker");
         return books;
       } else {
         return [];
       }
     } else {
       throw Exception("Failed to load books from Deichman");
+    }
+  }
+
+  static Future<List<Cicerobok>> searchPlasseringer(
+      List<DeichmanBok> books) async {
+    var recordIds = books.map((bok) => bok.recordId).join(',');
+
+    var url = Uri.parse('$_ciceroUrl?id=$recordIds');
+    print(url);
+    var response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      List<Cicerobok> plasseringer = [];
+
+      var data = jsonDecode(response.body);
+      data.forEach((key, value) {
+        for (var item in value['items']) {
+          var deichmanbok = books.singleWhere((book) => book.recordId == key);
+
+          plasseringer.add(Cicerobok(
+              recordId: key,
+              title: deichmanbok.title,
+              locLabel: item['locLabel'] ?? '',
+              locRaw: item['locRaw'] ?? '',
+              available: item['available'] ?? 0,
+              branchcode: item['branchcode'],
+              status: item['status']));
+        }
+      });
+      return plasseringer;
+    } else {
+      throw Exception("Kunne ikke hente data fra Cicero");
     }
   }
 }
