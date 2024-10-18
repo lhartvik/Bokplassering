@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class DeichmanBok {
   final String id;
   final String recordId;
@@ -6,6 +8,7 @@ class DeichmanBok {
   final List<String> author;
   final int publishedYear;
   final String imageLink;
+  final String plot;
 
   DeichmanBok(
       {required this.id,
@@ -14,7 +17,8 @@ class DeichmanBok {
       required this.mediaType,
       required this.author,
       required this.publishedYear,
-      required this.imageLink});
+      required this.imageLink,
+      required this.plot});
 
   factory DeichmanBok.fromJson(Map<String, dynamic> json) {
     print("serialiserer ${json['recordId']}");
@@ -27,7 +31,8 @@ class DeichmanBok {
             .map((author) => author.toString())
             .toList(),
         publishedYear: json['publicationYear'] ?? 0,
-        imageLink: json['coverImage'] ?? '');
+        imageLink: json['coverImage'] ?? '',
+        plot: json['various']?[0] ?? '');
     print(bok);
     return bok;
   }
@@ -36,11 +41,12 @@ class DeichmanBok {
     return {
       'id': id,
       'recordId': recordId,
-      'fullTitle': title,
+      'title': title,
       'mediaType': mediaType,
-      'author': author,
+      'author': json.encode(author),
       'publishedYear': publishedYear,
       'coverImage': imageLink,
+      'plot': plot
     };
   }
 
@@ -48,11 +54,16 @@ class DeichmanBok {
     return DeichmanBok(
         id: jsonObject['id'] as String,
         recordId: jsonObject['recordId'] as String,
-        title: jsonObject['fullTitle'] as String,
+        title: jsonObject['title'] as String,
         mediaType: jsonObject['mediaType'] as String,
-        author: jsonObject['author'] as List<String>,
+        author: jsonObject['author'] is String
+            ? (json.decode(jsonObject['author']) as List)
+                .map((e) => e as String)
+                .toList()
+            : [],
         publishedYear: jsonObject['publishedYear'] as int,
-        imageLink: jsonObject['coverImage'] as String);
+        imageLink: jsonObject['coverImage'] as String,
+        plot: jsonObject['plot'] as String);
   }
 
   @override
