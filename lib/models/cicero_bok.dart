@@ -15,4 +15,10 @@ class Cicerobok {
       required this.available,
       required this.branchcode,
       required this.status});
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return locRaw;
+  }
 }

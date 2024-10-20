@@ -49,7 +49,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(
-                          onPressed: () async {
+                          onPressed: () async {                          
                             try {
                               int savedInt =
                                   await DatabaseHelper.instance.insert(book);
@@ -72,20 +72,20 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                             }
                           },
                           child: const Text('Lagre')),
-                      ElevatedButton.icon(
-                          onPressed: () async {
-                            try {
-                              await DatabaseHelper.instance
-                                  .readAllBooks()
-                                  .then((books) => {
-                                        for (var book in books) {print(book)}
-                                      });
-                            } catch (e) {
-                              print("Error: $e");
-                            }
-                          },
-                          icon: const Icon(Icons.shelves),
-                          label: const Text('Plassering')),
+                      // ElevatedButton.icon(
+                      //     onPressed: () async {
+                      //       try {
+                      //         await DatabaseHelper.instance
+                      //             .readAllBooks()
+                      //             .then((books) => {
+                      //                   for (var book in books) {print(book)}
+                      //                 });
+                      //       } catch (e) {
+                      //         print("Error: $e");
+                      //       }
+                      //     },
+                      //     icon: const Icon(Icons.shelves),
+                      //     label: const Text('Plassering')),
                     ],
                   ),
                   const SizedBox(

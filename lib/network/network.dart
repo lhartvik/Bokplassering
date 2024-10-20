@@ -17,7 +17,30 @@ class Network {
         List<DeichmanBok> books = (data['hits'] as List<dynamic>)
             .map((book) => DeichmanBok.fromJson(book as Map<String, dynamic>))
             .toList();
-        return books;
+
+        List<Cicerobok> plasseringer = await searchPlasseringer(books).then(
+            (plasseringer) => plasseringer
+                .where((plassering) => plassering.branchcode == 'bjor')
+                .toList());
+
+        return books
+            .where((book) => plasseringer
+                .any((plassering) => plassering.recordId == book.recordId))
+            .map((book) {
+          List<String> statuser = plasseringer
+              .where((plassering) => plassering.recordId == book.recordId)
+              .map((plassering) => plassering.status)
+              .toList();
+          if (statuser.any((status) => status != "Utlånt")) {
+            book.status = "Inne";
+          } else {
+            book.status = plasseringer
+                .firstWhere(
+                    (plassering) => plassering.recordId == book.recordId)
+                .status;
+          }
+          return book;
+        }).toList();
       } else {
         return [];
       }

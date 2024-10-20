@@ -15,14 +15,16 @@ class _CiceroScreenState extends State<CiceroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Plassering av bøkene(kun Bjørvika)')),
+        appBar:
+            AppBar(title: const Text('xxPlassering av bøkene(kun Bjørvika)')),
         body: FutureBuilder<List<Cicerobok>>(
             future: DatabaseHelper.instance
                 .readAllBooks()
                 .then((books) => Network.searchPlasseringer(books))
                 .then((cicerobooks) =>
                     groupBy(cicerobooks, (book) => book.branchcode)['bjor'] ??
-                    []),
+                    [] as List<Cicerobok>)
+                .then((plasseringer) => plasseringer.sorted(byFloor)),
             builder: (context, snapshot) => snapshot.hasData
                 ? ListView.builder(
                     itemCount: snapshot.data!.length,
@@ -68,5 +70,17 @@ class _CiceroScreenState extends State<CiceroScreen> {
                     },
                   )
                 : CircularProgressIndicator()));
+  }
+
+  int byFloor(Cicerobok a, Cicerobok b) {
+    String as = a.locRaw.toLowerCase().trim();
+    String bs = b.locRaw.toLowerCase().trim();
+    print('A: $as');
+    print('B: $bs');
+    print(as.compareTo(bs));
+    print(as.startsWith('bjor.u') && !bs.startsWith('bjor.u'));
+    if (as.startsWith('bjor.u') && !bs.startsWith('bjor.u')) return -1;
+    if (bs.startsWith('bjor.u') && !as.startsWith('bjor.u')) return 1;
+    return as.compareTo(bs);
   }
 }

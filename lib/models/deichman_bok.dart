@@ -9,6 +9,7 @@ class DeichmanBok {
   final int publishedYear;
   final String imageLink;
   final String plot;
+  String status = "";
 
   DeichmanBok(
       {required this.id,

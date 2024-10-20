@@ -24,16 +24,11 @@ class GridViewWidget extends StatelessWidget {
               margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.surfaceContainerHigh,
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, '/details',
                       arguments: BookDetailsArguments(book: book));
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const BooksDetailsScreen()));
                 },
                 child: Column(
                   children: [
@@ -58,7 +53,8 @@ class GridViewWidget extends StatelessWidget {
                           : "(ingen forfatter)",
                       style: Theme.of(context).textTheme.titleSmall,
                       overflow: TextOverflow.ellipsis,
-                    )
+                    ),
+                    if (book.status == "Utlånt") const Text("Utlånt nå"),
                   ],
                 ),
               ),
