@@ -1,0 +1,241 @@
+{
+  "filters": [
+    {
+      "type": "branch",
+      "options": [
+        { "text": "bholm", "value": "branch_bholm", "count": 1 },
+        { "text": "bjor", "value": "branch_bjor", "count": 1 },
+        { "text": "btoyen", "value": "branch_btoyen", "count": 1 },
+        { "text": "fbje", "value": "branch_fbje", "count": 1 },
+        { "text": "fbjo", "value": "branch_fbjo", "count": 1 },
+        { "text": "fbol", "value": "branch_fbol", "count": 1 },
+        { "text": "ffur", "value": "branch_ffur", "count": 1 },
+        { "text": "fgam", "value": "branch_fgam", "count": 1 },
+        { "text": "fhol", "value": "branch_fhol", "count": 1 },
+        { "text": "flam", "value": "branch_flam", "count": 1 },
+        { "text": "flin", "value": "branch_flin", "count": 1 },
+        { "text": "fmaj", "value": "branch_fmaj", "count": 1 },
+        { "text": "fmor", "value": "branch_fmor", "count": 1 },
+        { "text": "fnor", "value": "branch_fnor", "count": 1 },
+        { "text": "fnyd", "value": "branch_fnyd", "count": 1 },
+        { "text": "fopp", "value": "branch_fopp", "count": 1 },
+        { "text": "frik", "value": "branch_frik", "count": 1 },
+        { "text": "froa", "value": "branch_froa", "count": 1 },
+        { "text": "from", "value": "branch_from", "count": 1 },
+        { "text": "fsme", "value": "branch_fsme", "count": 1 },
+        { "text": "fsto", "value": "branch_fsto", "count": 1 },
+        { "text": "ftor", "value": "branch_ftor", "count": 1 },
+        { "text": "hsko", "value": "branch_hsko", "count": 1 }
+      ]
+    },
+    {
+      "type": "audience",
+      "options": [
+        { "text": "13-15 år", "value": "work.audiences_13-15 år", "count": 1 },
+        { "text": "Ungdom", "value": "work.audiences_Ungdom", "count": 1 }
+      ]
+    },
+    {
+      "type": "language",
+      "options": [
+        {
+          "text": "Norsk (bokmål)",
+          "value": "languages_Norsk (bokmål)",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "type": "mediatype",
+      "options": [{ "text": "Bok", "value": "mediaType_Bok", "count": 1 }]
+    },
+    { "type": "format", "options": [] }
+  ],
+  "hits": [
+    {
+      "id": "4472ac57-17b0-4421-a08e-081fdd1dd819",
+      "uri": "http://data.deichman.no/publication/4472ac57-17b0-4421-a08e-081fdd1dd819",
+      "recordId": "9166894",
+      "mediaType": "Bok",
+      "mainTitle": "Hør her'a!",
+      "agents": {},
+      "agentsInfo": {},
+      "work": {
+        "id": "5d13ff9a-6a96-479f-ad91-6db8db043971",
+        "uri": "http://data.deichman.no/work/5d13ff9a-6a96-479f-ad91-6db8db043971",
+        "mainTitle": "Hør her'a!",
+        "type": "Litteratur",
+        "agents": { "authors": ["Gulraiz Sharif", "Sharif, Gulraiz"] },
+        "agentsInfo": {
+          "authors": [
+            {
+              "uri": "http://data.deichman.no/person/0d661e81-dc24-4717-a1e2-5af6edb1e0b4",
+              "id": "0d661e81-dc24-4717-a1e2-5af6edb1e0b4",
+              "type": "person",
+              "label": "Gulraiz Sharif",
+              "slug": "gulraiz-sharif",
+              "number": ""
+            }
+          ]
+        },
+        "fictionNonfiction": ["Fiksjon"],
+        "mainEntry": "Gulraiz Sharif",
+        "mainEntryNationalities": ["Norge"],
+        "mainEntryInfo": {
+          "uri": "http://data.deichman.no/person/0d661e81-dc24-4717-a1e2-5af6edb1e0b4",
+          "id": "0d661e81-dc24-4717-a1e2-5af6edb1e0b4",
+          "type": "person",
+          "label": "Gulraiz Sharif",
+          "slug": "gulraiz-sharif",
+          "number": ""
+        },
+        "publicationYear": 2020,
+        "literaryForms": ["Roman"],
+        "subjects": [
+          "Oslo",
+          "Familieforhold",
+          "Kulturforskjeller og kulturmøte",
+          "Pakistanere",
+          "Transpersoner",
+          "Tenåringsgutter"
+        ],
+        "audiences": ["Ungdom", "13-15 år"],
+        "languages": ["Norsk (bokmål)"]
+      },
+      "otherPublications": {},
+      "created": "2020-08-19T10:56:00.822Z",
+      "deleted": false,
+      "titleAll": ["Hør her'a!", "Hør her'a!"],
+      "ageLimit": 0,
+      "coverImage": "/cover-images/4472ac57-17b0-4421-a08e-081fdd1dd819.jpg",
+      "various": [
+        "15 år gamle Mahmoud ser for seg en sommerferie med lange late dager på en benk utenfor blokka sammen med kompisen, Arif den enøyde. Men sommeren blir annerledes enn det Mahmoud hadde planer om. Familien får besøk av Onkel ji fra Pakistan og Mahmoud får i oppgave å vise onkelen rundt i Oslo. Onkel ji gjør store øyne i Norge, og så lurer han på hva det er med Ali, lillebroren til Mahmoud, som ikke oppfører seg slik gutter skal. Mahmoud blir stilt overfor store prøvelser denne sommeren, både som bror og sønn i en pakistansk familie. Dette er en historie som sparker i alle retninger og er en sjelden stemme med mye på hjertet. Fortelling for ungdomstrinnet. Omtalen er utarbeidet av Biblioteksentralen.",
+        "9166894"
+      ],
+      "publicationYear": 2020,
+      "ids": ["978-82-02-64812-1"],
+      "languages": ["Norsk (bokmål)"],
+      "shelfMark": "UNG Sha",
+      "fullTitle": "Hør her'a!",
+      "hiddenSearchables": [
+        "Unge gutter",
+        "Transkjønnethet",
+        "Flerkultur",
+        "Transkjønnede"
+      ],
+      "allAgents": ["Gulraiz Sharif", "Sharif, Gulraiz"],
+      "publishedBy": ["Cappelen Damm"],
+      "numberOfPagesCosmetic": 173,
+      "author": ["Gulraiz Sharif", "Sharif, Gulraiz"],
+      "homeBranches": [
+        "fopp",
+        "bjor",
+        "from",
+        "froa",
+        "fsto",
+        "fhol",
+        "ftor",
+        "ffur",
+        "fbol",
+        "fnyd",
+        "fnor",
+        "flin",
+        "fmaj",
+        "flam",
+        "hsko",
+        "fbjo",
+        "fbje",
+        "fmor",
+        "fgam",
+        "fsme",
+        "btoyen",
+        "frik",
+        "bholm"
+      ],
+      "availableBranches": [
+        "fopp",
+        "from",
+        "froa",
+        "fhol",
+        "ftor",
+        "fmaj",
+        "flin",
+        "fbjo",
+        "fbol",
+        "ffur",
+        "flam",
+        "fmor",
+        "fgam",
+        "fnor",
+        "fnyd",
+        "btoyen",
+        "hsko",
+        "bjor",
+        "fsto",
+        "frik",
+        "fbje"
+      ],
+      "locations": [
+        "fopp_Ung_null_null_null",
+        "bjor_3. etasje_Ung_null_null",
+        "from_Ung_null_null_null",
+        "froa_Ung_null_null_null",
+        "fsto_Ung_null_null_null",
+        "fhol_Ung_null_null_null",
+        "ftor_Ung_null_null_null",
+        "ffur_Ung_null_null_null",
+        "fbol_Ung_null_null_null",
+        "fnyd_Ung_null_null_null",
+        "fnor_Ung_null_null_null",
+        "flin_Ung_null_null_null",
+        "fmaj_Ung_null_null_null",
+        "flam_Ung_null_null_null",
+        "flin_Hurtiglån_null_null_null",
+        "hsko_Skolesamling_null_null_null",
+        "fbjo_Ung_null_null_null",
+        "fbjo_Hurtiglån_null_null_null",
+        "fbjo_null_null_null_null",
+        "bjor_1. etasje_Hurtiglån_null_null",
+        "ffur_Hurtiglån_null_null_null",
+        "fbje_Ung_null_null_null",
+        "fmaj_null_null_null_null",
+        "fmor_Ung_null_null_null",
+        "fgam_Ung_null_null_null",
+        "fsme_Ung_null_null_null",
+        "fhol_Hurtiglån_null_null_null",
+        "fbje_Hurtiglån_null_null_null",
+        "fhol_Ung_null_Utstilling_null",
+        "fhol_null_null_null_null",
+        "ftor_null_null_null_null",
+        "btoyen_null_null_null_LIVET",
+        "from_Hurtiglån_null_null_null",
+        "fgam_Underetasje_Lettlest_400-499_LETTLEST",
+        "frik_Ung_null_null_null",
+        "flam_null_null_null_null",
+        "btoyen_Hurtiglån_null_null_null",
+        "bholm_null_null_null_LIVET"
+      ],
+      "numItems": 203,
+      "reservesByYear": null,
+      "issuesByYear": null,
+      "issuesTotal": 0,
+      "kohaPopularity": 0,
+      "likes": 0,
+      "likedBy": [],
+      "recommended": false,
+      "recommendations": null,
+      "images": {
+        "small": "/api/images/resize/150/cover-images/4472ac57-17b0-4421-a08e-081fdd1dd819.jpg",
+        "medium": "/api/images/resize/270/cover-images/4472ac57-17b0-4421-a08e-081fdd1dd819.jpg",
+        "large": "/api/images/resize/420/cover-images/4472ac57-17b0-4421-a08e-081fdd1dd819.jpg",
+        "largest": "/api/images/resize/800/cover-images/4472ac57-17b0-4421-a08e-081fdd1dd819.jpg",
+        "hasAllSizes": true,
+        "useFallback": false,
+        "fallbackColor": "col-ok-5"
+      },
+      "flags": []
+    }
+  ],
+  "totalHits": 1,
+  "numHitsRemoved": 0
+}
