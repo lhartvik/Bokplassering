@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'pages/book_details_screen.dart';
 import 'pages/cicero_screen.dart';
@@ -6,6 +7,8 @@ import 'pages/deichman_screen.dart';
 import 'pages/home_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -52,9 +55,8 @@ class _SokesideState extends State<Sokeside> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            title: const Text("Bokplassering")),
+        appBar:
+            AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: const Text("Bokplassering")),
         body: _screens[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -62,8 +64,7 @@ class _SokesideState extends State<Sokeside> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Søk'),
             BottomNavigationBarItem(icon: Icon(Icons.save), label: 'Lagret'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shelves), label: 'Plasseringer'),
+            BottomNavigationBarItem(icon: Icon(Icons.shelves), label: 'Plasseringer'),
           ],
           selectedItemColor: Theme.of(context).colorScheme.onPrimary,
           unselectedItemColor: Theme.of(context).colorScheme.onSurface,

@@ -20,55 +20,48 @@ class _CiceroScreenState extends State<CiceroScreen> {
             future: DatabaseHelper.instance
                 .readAllBooks()
                 .then((books) => Network.searchPlasseringer(books))
-                .then((cicerobooks) =>
-                    groupBy(cicerobooks, (book) => book.branchcode)['bjor'] ??
-                    [] as List<Cicerobok>)
+                .then((cicerobooks) => groupBy(cicerobooks, (book) => book.branchcode)['bjor'] ?? [] as List<Cicerobok>)
                 .then((plasseringer) => plasseringer.sorted(byFloor)),
-            builder: (context, snapshot) => snapshot.hasData
-                ? ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      Cicerobok book = snapshot.data![index];
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .surfaceContainerHigh),
-                          child: Stack(children: [
-                            SizedBox(
-                              width: double.infinity,
-                              child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
+            builder: (context, snapshot) => (snapshot.connectionState != ConnectionState.done)
+                ? const Center(child: CircularProgressIndicator())
+                : (snapshot.connectionState == ConnectionState.done && snapshot.hasData && snapshot.data!.isNotEmpty)
+                    ? ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          Cicerobok book = snapshot.data![index];
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(color: Theme.of(context).colorScheme.surfaceContainerHigh),
+                              child: Stack(children: [
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                                     Text(book.title),
                                     Text(book.locLabel),
                                     Text(book.locRaw),
-                                    Text(
-                                        'Antall tilgjengelig: ${book.available.toString()}')
+                                    Text('Antall tilgjengelig: ${book.available.toString()}')
                                   ]),
+                                ),
+                                (book.status != "Utlånt")
+                                    ? const SizedBox(height: 10, width: 10)
+                                    : Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Center(
+                                          child: Text("Utlånt",
+                                              style: TextStyle(
+                                                  fontSize: 50,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onErrorContainer
+                                                      .withValues(alpha: 0.3))),
+                                        ),
+                                      )
+                              ]),
                             ),
-                            (book.status != "Utlånt")
-                                ? const SizedBox(height: 10, width: 10)
-                                : Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Center(
-                                      child: Text("Utlånt",
-                                          style: TextStyle(
-                                              fontSize: 50,
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .onErrorContainer
-                                                  .withOpacity(0.3))),
-                                    ),
-                                  )
-                          ]),
-                        ),
-                      );
-                    },
-                  )
-                : const CircularProgressIndicator()));
+                          );
+                        })
+                    : const Center(child: Text("Ingen bøker lagret"))));
   }
 
   int byFloor(Cicerobok a, Cicerobok b) {
